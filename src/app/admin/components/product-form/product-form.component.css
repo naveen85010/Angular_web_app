@@ -1,0 +1,15 @@
+#pos{
+    position:absolute;
+    left: 20px;
+    
+}
+
+#fo{
+    position: relative;
+    left:70px;
+}
+
+#pr{
+    position: relative;
+    top: 50px;
+}

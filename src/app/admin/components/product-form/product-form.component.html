@@ -1,0 +1,48 @@
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<div class="row">
+    <div class="col-md-6" id="fo">
+        <form #f="ngForm" (ngSubmit)="save(f.value)"id="pos" >
+            <div class="form-group">
+                <label for="title"><strong>Title</strong></label>
+                <input #title="ngModel" ngModel name="title" id="title"type="text" class="form-control" required  >
+                <div class="alert alert-danger" *ngIf="title.touched && title.invalid"> Title is reqired</div>
+            </div>
+        
+            <div class="form-group">
+                <label for="price "><strong>Price</strong></label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input #price="ngModel" ngModel name="price" id="Price"type="number" class="form-control" required>
+                 </div>
+                <div class="alert alert-danger" *ngIf="price.touched && price.invalid"> price is reqired</div>
+            </div>
+             
+            <div class="form-group">
+                <label for="category"><strong>category</strong></label>
+                <select #category="ngModel" ngModel name="category" id="category" class="form-control" required>
+                    <option  *ngFor="let c of categories$ |async"[value]="c.$key">{{c.name}}</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="category.touched && category.invalid"> category is reqired</div>
+            </div>
+            <div class="form-group">
+                <label for="imageurl"><strong>ImageUrl</strong></label>
+                <input #imageurl="ngModel" ngModel name="imageurl" type="text" class="form-control" required>
+                <div class="alert alert-danger" *ngIf="imageurl.touched && imageurl.invalid"> Imgurl is reqired</div>
+            </div>
+            <button class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+    <div class="col-md-6" id="pr">
+        <div class="card" style="width: 18rem;">
+            <img [src]="imageurl.value" class="card-img-top" >
+            <div class="card-body">
+              <h5 class="card-title">{{title.value}}</h5>
+              <p class="card-text">{{price.value |currency:'USD':true}}</p>
+              
+            </div>
+          </div>
+    </div>
+    
+
+</div>
